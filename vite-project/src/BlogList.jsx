@@ -1,5 +1,7 @@
 import React from 'react';
 import BlogPost from './BlogPost';
+// import Search from './Search';
+
 
 function BlogList({blogs, onBlogDelete}) {
     

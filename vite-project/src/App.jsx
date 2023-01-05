@@ -1,8 +1,10 @@
-import  {useState, useEffect} from 'react';
+import {useState, useEffect} from 'react';
 import Header from "./Header";
 import NavBar from "./NavBar";
 import BlogList from "./BlogList";
-import {Route, Switch} from "react-router-dom"
+import {Route, Switch} from "react-router-dom";
+// import LikesList from "./LikesList";
+// import YourBlogs from "./YourBlogs";
 
 function App() {
 
@@ -10,7 +12,7 @@ function App() {
 
   useEffect(()=> {
     fetch("http://localhost:9292/blogs")
-    .then ((r)=> r.json())
+    .then((r)=> r.json())
     .then((blogs)=> setBlogs(blogs))
   }, []);
 
@@ -31,15 +33,15 @@ function App() {
           />
         </Route>
 
-        <Route exact path="/likes">
+        {/* <Route exact path="/likes">
           <LikesList
           />
         </Route>
 
         <Route exact path="/your_blogs">
-          <YourBlogs 
+          <YourBlogs
           />
-        </Route>
+        </Route> */}
 
       </Switch>
       

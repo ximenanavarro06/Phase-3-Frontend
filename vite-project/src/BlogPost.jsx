@@ -1,7 +1,9 @@
-import React from 'react';
+import {useState, useEffect} from 'react';
+import CommentList from './CommentList';
 
 function BlogPost({blog, onBlogDelete}) {
 const {id, title, description, like_count: likeCount, user_id: userId, created_at: createdAt} = blog;
+const [comments, setComments] = useState([])
 
 function handleDeleteClick() {
     fetch(`http://localhost:9292/blogs/${id}`, {
@@ -9,6 +11,13 @@ function handleDeleteClick() {
     });
     onBlogDelete(id)
 }
+
+useEffect(()=> {
+    fetch(`http://localhost:9292/comments/${id}`)
+    .then((r)=> r.json())
+    .then((comments)=> setComments(comments))
+    
+}, [comments.id])
 
 return (
     <div>
@@ -22,6 +31,7 @@ return (
               🗑
             </span>
           </button>
+        <CommentList comments={comments}/>
     </div>
 )
 
