@@ -3,7 +3,7 @@ import BlogPost from './BlogPost';
 // import Search from './Search';
 
 
-function BlogList({blogs, onBlogDelete}) {
+function BlogList({blogs, onBlogDelete, }) {
     
 
     return (
@@ -13,6 +13,12 @@ function BlogList({blogs, onBlogDelete}) {
                 key = {blog.id}
                 blog={blog}
                 onBlogDelete={onBlogDelete}
+                
+
+
+                // onAddLike={onAddLike}
+                // onDeleteLike={onDeleteLike}
+                
                 />
                     
                 ))}

@@ -1,19 +1,20 @@
 import {useState} from 'react';
 
-function NewCommentForm({onAddNewComment}) {
+
+function NewCommentForm({onAddNewComment, blogId}) {
+    // console.log(blogId)
     const [commentForm, setCommentForm] = useState({
         content: "",
-        blogId: "",
-        userId: "",
+        blogId: blogId,
     })
 
     function handleSubmit(event) {
         event.preventDefault();
 
     const newComment = {
-        "content": commentForm.content,
-        blogId: commentForm.blogId,
-        userId: commentForm.userId
+        content: commentForm.content,
+        blog_id: commentForm.blogId,
+        
     };
     console.log(newComment);
 
@@ -29,12 +30,15 @@ function NewCommentForm({onAddNewComment}) {
         setCommentForm({
             content: ""
         })
+        console.log("worked")
     }
 
     function handleChange(event) {
-        console.log(event.target.value);
+        console.log(event.target.name);
+        
         setCommentForm({...commentForm, [event.target.name]: event.target.value})
         console.log(commentForm);
+
     }
 
     return (
